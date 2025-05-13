@@ -5,7 +5,7 @@ package movieque.common.genre;
 // Represents a film or TV show genre
 message Genre {
     // TMDB unique identifier for the genre
-    uint32 id = 1;
+    required uint32 id = 1;
 
     // Name of the genre (e.g., "Action", "Comedy")
     string name = 2;

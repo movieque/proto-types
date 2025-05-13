@@ -5,7 +5,7 @@ package movieque.common.cast;
 // Represents a cast member (actor) in a production
 message Cast {
     // TMDB unique identifier for the person
-    uint32 id = 1;
+    required uint32 id = 1;
 
     // Full name of the person
     string name = 2;
@@ -38,5 +38,5 @@ message Cast {
 
     // Path to the person's profile image (can be null/empty)
     // Optionality is implicit in proto3 for scalar types other than message fields
-    string profile_path = 11;
+    optional string profile_path = 11;
 }

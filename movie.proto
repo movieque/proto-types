@@ -8,25 +8,10 @@ import "common/country.proto";
 import "common/language.proto";
 import "google/protobuf/timestamp.proto";
 
-// Information about a collection a movie belongs to
-message CollectionInfo {
-    // TMDB unique identifier for the collection
-    uint32 id = 1;
-
-    // Name of the collection
-    string name = 2;
-
-    // Path to the collection's poster image (can be null/empty)
-    string poster_path = 3;
-
-    // Path to the collection's backdrop image (can be null/empty)
-    string backdrop_path = 4;
-}
-
 // Represents a movie with all its metadata
 message Movie {
     // TMDB unique identifier for the movie
-    uint32 id = 1;
+    required uint32 id = 1;
 
     // Title of the movie
     string title = 2;
@@ -35,13 +20,13 @@ message Movie {
     string original_title = 3;
 
     // IMDb unique identifier (e.g., "tt0120338") - can be null/empty
-    string imdb_id = 4;
+    optional string imdb_id = 4;
 
     // Release status (e.g., "Released", "Post Production")
     string status = 5;
 
     // Release date of the movie (can be null)
-    google.protobuf.Timestamp release_date = 6;
+    optional google.protobuf.Timestamp release_date = 6;
 
     // Whether the movie is considered adult content
     bool adult = 7;
@@ -50,19 +35,19 @@ message Movie {
     bool video = 8;
 
     // Overview or summary of the movie (can be null/empty)
-    string overview = 9;
+    optional string overview = 9;
 
     // Tagline for the movie (can be null/empty)
-    string tagline = 10;
+    optional string tagline = 10;
 
     // URL to the official homepage (can be null/empty)
-    string homepage = 11;
+    optional string homepage = 11;
 
     // Path to the movie's poster image (can be null/empty)
-    string poster_path = 12;
+    optional string poster_path = 12;
 
     // Path to the movie's backdrop image (can be null/empty)
-    string backdrop_path = 13;
+    optional string backdrop_path = 13;
 
     // Original language of the movie (ISO 639-1 code)
     string original_language = 14;
@@ -74,7 +59,7 @@ message Movie {
     uint32 revenue = 16;
 
     // Runtime in minutes (can be 0 if unknown)
-    uint32 runtime = 17;
+    optional uint32 runtime = 17;
 
     // Popularity score on TMDB
     double popularity = 18;
@@ -98,5 +83,5 @@ message Movie {
     repeated movieque.common.language.Language spoken_languages = 24;
 
     // Information about the collection this movie belongs to (can be null)
-    optional CollectionInfo belongs_to_collection = 25;
+    optional string belongs_to_collection = 25;
 }

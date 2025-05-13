@@ -5,20 +5,20 @@ package movieque.common.network;
 // Represents a TV network
 message Network {
     // TMDB unique identifier for the network
-    uint32 id = 1;
+    required uint32 id = 1;
 
     // Name of the network
     string name = 2;
 
     // Path to the network's logo image (can be null/empty)
-    string logo_path = 3;
+    optional string logo_path = 3;
 
     // Country where the network originated
-    string origin_country = 4;
+    optional string origin_country = 4;
 
     // Headquarters location of the network (can be null/empty)
-    string headquarters = 5;
+    optional string headquarters = 5;
 
     // Official homepage URL of the network (can be null/empty)
-    string homepage = 6;
+    optional string homepage = 6;
 }

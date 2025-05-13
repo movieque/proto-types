@@ -5,14 +5,14 @@ package movieque.common.company;
 // Represents a film or TV production company
 message Company {
     // TMDB unique identifier for the company
-    uint32 id = 1;
+    required uint32 id = 1;
 
     // Name of the company
     string name = 2;
 
     // Path to the company's logo image (can be null/empty)
-    string logo_path = 3;
+    optional string logo_path = 3;
 
     // Country where the company originated
-    string origin_country = 4;
+    optional string origin_country = 4;
 }

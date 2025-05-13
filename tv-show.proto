@@ -3,106 +3,18 @@ syntax = "proto3";
 package movieque.tvshow;
 
 import "google/protobuf/timestamp.proto";
-// import "google/protobuf/wrappers.proto"; // No longer needed for next_episode_to_air
 import "common/genre.proto";
 import "common/company.proto";
 import "common/country.proto";
 import "common/language.proto";
 import "common/network.proto";
-// Imports for actual Episode and Season are not directly needed if we only use references here.
-// However, the reference messages themselves might be defined in episode.proto or season.proto
-// For clarity, if TvShowEpisodeReference and TvShowSeasonReference are self-contained summaries,
-// direct imports of movieque.episode.Episode or movieque.season.Season are not strictly necessary here.
-// The plan was to keep these as summary types.
-
-// Represents a creator of a TV show
-message Creator {
-    // TMDB unique identifier for the creator
-    uint32 id = 1;
-
-    // Full name of the creator
-    string name = 2;
-
-    // Unique identifier for this specific credit
-    string credit_id = 3;
-
-    // Gender identifier (0: Not Specified, 1: Female, 2: Male, 3: Non-binary)
-    uint32 gender = 4;
-
-    // Path to the creator's profile image (can be null/empty)
-    string profile_path = 5;
-}
-
-// Represents a simplified episode reference (last/next aired) for TV Show context
-message TvShowEpisodeReference {
-    // TMDB unique identifier for the episode
-    uint32 id = 1;
-
-    // Episode name/title
-    string name = 2;
-
-    // Episode number within the season
-    uint32 episode_number = 3;
-
-    // Season number this episode belongs to
-    uint32 season_number = 4;
-
-    // Air date of the episode (can be null)
-    google.protobuf.Timestamp air_date = 5;
-
-    // Overview or summary of the episode (can be null/empty)
-    string overview = 6;
-
-    // Production code used by the studio (can be null/empty)
-    string production_code = 7;
-
-    // Runtime in minutes (can be 0 if unknown)
-    uint32 runtime = 8;
-
-    // Path to the episode's still image (can be null/empty)
-    string still_path = 9;
-
-    // Average user rating
-    double vote_average = 10;
-
-    // Number of user votes
-    uint32 vote_count = 11;
-
-    // Reference to the TV show this episode belongs to
-    uint32 show_id = 12; // TMDB includes this in episode details
-}
-
-// Represents a simplified season reference for TV Show context
-message TvShowSeasonReference {
-    // TMDB unique identifier for the season
-    uint32 id = 1;
-
-    // Season name/title
-    string name = 2;
-
-    // Season number in the TV show (0 for specials)
-    uint32 season_number = 3;
-
-    // Air date of the first episode of the season (can be null)
-    google.protobuf.Timestamp air_date = 4;
-
-    // Number of episodes in this season
-    uint32 episode_count = 5;
-
-    // Overview or summary of the season (can be null/empty)
-    string overview = 6;
-
-    // Path to the season's poster image (can be null/empty)
-    string poster_path = 7;
-
-    // Average user rating for the season
-    double vote_average = 8;
-}
+import "person.proto";
+import "season.proto";
 
 // Represents a TV show with all its metadata
 message TvShow {
     // TMDB unique identifier for the TV show
-    uint32 id = 1;
+    required uint32 id = 1;
 
     // Name/title of the TV show
     string name = 2;
@@ -129,19 +41,19 @@ message TvShow {
     bool adult = 9;
 
     // Overview or summary of the TV show (can be null/empty)
-    string overview = 10;
+    optional string overview = 10;
 
     // Brief tagline for the TV show (can be null/empty)
-    string tagline = 11;
+    optional string tagline = 11;
 
     // URL to the official homepage (can be null/empty)
-    string homepage = 12;
+    optional string homepage = 12;
 
     // Path to the TV show's poster image (can be null/empty)
-    string poster_path = 13;
+    optional string poster_path = 13;
 
     // Path to the TV show's backdrop image (can be null/empty)
-    string backdrop_path = 14;
+    optional string backdrop_path = 14;
 
     // Original language of the TV show (ISO 639-1 code)
     string original_language = 15;
@@ -168,10 +80,10 @@ message TvShow {
     repeated string origin_country = 22;
 
     // Languages used in the show (ISO 639-1 codes) - this might be redundant if spoken_languages is comprehensive
-    repeated string languages = 23; // Consider if this is distinct from spoken_languages
+    repeated string languages = 23;
 
     // Creators of the TV show
-    repeated Creator created_by = 24;
+    repeated movieque.person.Person created_by = 24;
 
     // Networks that air the TV show
     repeated movieque.common.network.Network networks = 25;
@@ -189,11 +101,5 @@ message TvShow {
     repeated movieque.common.language.Language spoken_languages = 29;
 
     // Seasons in the TV show (summary view)
-    repeated TvShowSeasonReference seasons = 30;
-
-    // Information about the last episode to air (can be null)
-    optional TvShowEpisodeReference last_episode_to_air = 31;
-
-    // Information about the next episode to air, if available (can be null)
-    optional TvShowEpisodeReference next_episode_to_air = 32;
+    repeated movieque.season.Season seasons = 30;
 }
