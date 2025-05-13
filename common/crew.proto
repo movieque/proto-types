@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package movieque.common.crew;
+
+// Represents a crew member working on a production
+message Crew {
+    // TMDB unique identifier for the person
+    uint32 id = 1;
+
+    // Full name of the person
+    string name = 2;
+
+    // Original name, possibly in native language
+    string original_name = 3;
+
+    // Specific job title within the department
+    string job = 4;
+
+    // Department the crew member worked in (e.g., "Directing", "Writing")
+    string department = 5;
+
+    // Unique identifier for this specific credit
+    string credit_id = 6;
+
+    // Whether the person is considered an adult content performer
+    bool adult = 7;
+
+    // Gender identifier (1: Female, 2: Male, 0: Not Specified/Non-binary)
+    // TMDB uses 0 for Not Specified, 1 for Female, 2 for Male, 3 for Non-binary
+    // Adjusting comment to reflect potential TMDB values, keeping uint32
+    uint32 gender = 8;
+
+    // Primary department/profession the person is known for
+    string known_for_department = 9;
+
+    // Popularity score on TMDB
+    double popularity = 10;
+
+    // Path to the person's profile image (can be null/empty)
+    // Optionality is implicit in proto3 for scalar types other than message fields
+    string profile_path = 11;
+}

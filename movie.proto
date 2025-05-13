@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+package movieque.movie;
+
+import "common/genre.proto";
+import "common/company.proto";
+import "common/country.proto";
+import "common/language.proto";
+import "google/protobuf/timestamp.proto";
+
+// Information about a collection a movie belongs to
+message CollectionInfo {
+    // TMDB unique identifier for the collection
+    uint32 id = 1;
+
+    // Name of the collection
+    string name = 2;
+
+    // Path to the collection's poster image (can be null/empty)
+    string poster_path = 3;
+
+    // Path to the collection's backdrop image (can be null/empty)
+    string backdrop_path = 4;
+}
+
+// Represents a movie with all its metadata
+message Movie {
+    // TMDB unique identifier for the movie
+    uint32 id = 1;
+
+    // Title of the movie
+    string title = 2;
+
+    // Original title, possibly in native language
+    string original_title = 3;
+
+    // IMDb unique identifier (e.g., "tt0120338") - can be null/empty
+    string imdb_id = 4;
+
+    // Release status (e.g., "Released", "Post Production")
+    string status = 5;
+
+    // Release date of the movie (can be null)
+    google.protobuf.Timestamp release_date = 6;
+
+    // Whether the movie is considered adult content
+    bool adult = 7;
+
+    // Indicates if there's a video trailer available on TMDB (often true/false for a specific trailer endpoint)
+    bool video = 8;
+
+    // Overview or summary of the movie (can be null/empty)
+    string overview = 9;
+
+    // Tagline for the movie (can be null/empty)
+    string tagline = 10;
+
+    // URL to the official homepage (can be null/empty)
+    string homepage = 11;
+
+    // Path to the movie's poster image (can be null/empty)
+    string poster_path = 12;
+
+    // Path to the movie's backdrop image (can be null/empty)
+    string backdrop_path = 13;
+
+    // Original language of the movie (ISO 639-1 code)
+    string original_language = 14;
+
+    // Production budget in USD
+    uint32 budget = 15;
+
+    // Box office revenue in USD
+    uint32 revenue = 16;
+
+    // Runtime in minutes (can be 0 if unknown)
+    uint32 runtime = 17;
+
+    // Popularity score on TMDB
+    double popularity = 18;
+
+    // Average user rating
+    double vote_average = 19;
+
+    // Number of user votes
+    uint32 vote_count = 20;
+
+    // Genres associated with the movie
+    repeated movieque.common.genre.Genre genres = 21;
+
+    // Production companies involved
+    repeated movieque.common.company.Company production_companies = 22;
+
+    // Countries where the movie was produced
+    repeated movieque.common.country.Country production_countries = 23;
+
+    // Languages spoken in the movie
+    repeated movieque.common.language.Language spoken_languages = 24;
+
+    // Information about the collection this movie belongs to (can be null)
+    optional CollectionInfo belongs_to_collection = 25;
+}

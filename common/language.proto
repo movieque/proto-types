@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package movieque.common.language;
+
+// Represents a spoken language in a film or TV show
+message Language {
+    // ISO 639-1 language code (e.g., "en", "fr")
+    string iso_639_1 = 1;
+
+    // Name of the language in its native form (e.g., "English", "Français")
+    string name = 2;
+
+    // English name of the language (e.g., "English", "French")
+    string english_name = 3;
+}

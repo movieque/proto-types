@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package movieque.person;
+
+import "google/protobuf/timestamp.proto";
+// import "google/protobuf/wrappers.proto"; // No longer needed as StringValue is removed
+
+// Represents a person involved in media production (actor, director, etc.)
+message Person {
+    // TMDB unique identifier for the person
+    uint32 id = 1;
+
+    // Full name of the person
+    string name = 2;
+
+    // IMDb unique identifier for the person (e.g., "nm0000138")
+    string imdb_id = 3; // Can be null/empty
+
+    // Whether the person is considered an adult content performer
+    bool adult = 4;
+
+    // Gender identifier (0: Not Specified, 1: Female, 2: Male, 3: Non-binary)
+    uint32 gender = 5;
+
+    // Date of birth (can be null)
+    google.protobuf.Timestamp birthday = 6;
+
+    // Date of death (can be null if alive)
+    google.protobuf.Timestamp deathday = 7;
+
+    // Location where the person was born (can be null/empty)
+    string place_of_birth = 8;
+
+    // Primary department/profession the person is known for (e.g., "Acting", "Directing")
+    string known_for_department = 9;
+
+    // Biographical information about the person (can be null/empty)
+    string biography = 10;
+
+    // Popularity score on TMDB
+    double popularity = 11;
+
+    // Path to the person's profile image (can be null/empty)
+    string profile_path = 12;
+
+    // URL to the person's official website, if available (can be null/empty)
+    string homepage = 13;
+
+    // Alternative names the person is known by
+    repeated string also_known_as = 14;
+}

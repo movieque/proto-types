@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package movieque.episode;
+
+import "google/protobuf/timestamp.proto";
+import "common/crew.proto";
+import "common/cast.proto";
+
+// Represents a TV show episode with all its metadata
+message Episode {
+    // TMDB unique identifier for the episode
+    uint32 id = 1;
+
+    // Episode's name/title
+    string name = 2;
+
+    // Episode number within the season
+    uint32 episode_number = 3;
+
+    // Season number this episode belongs to
+    uint32 season_number = 4;
+
+    // Air date of the episode (can be null)
+    google.protobuf.Timestamp air_date = 5;
+
+    // Overview or summary of the episode (can be null/empty)
+    string overview = 6;
+
+    // Production code used by the studio (can be null/empty)
+    string production_code = 7;
+
+    // Runtime in minutes (can be 0 if unknown)
+    uint32 runtime = 8;
+
+    // Path to the episode's still image (can be null/empty)
+    string still_path = 9;
+
+    // Average user rating
+    double vote_average = 10;
+
+    // Number of user votes
+    uint32 vote_count = 11;
+
+    // Crew members who worked on the episode
+    repeated movieque.common.crew.Crew crew = 12;
+
+    // Guest stars appearing in the episode
+    repeated movieque.common.cast.Cast guest_stars = 13;
+}

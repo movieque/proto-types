@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package movieque.common.country;
+
+// Represents a production country
+message Country {
+    // ISO 3166-1 alpha-2 country code (e.g., "US", "GB")
+    string iso_3166_1 = 1;
+
+    // Full name of the country (e.g., "United States of America")
+    string name = 2;
+}
