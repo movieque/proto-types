@@ -8,7 +8,7 @@ import "episode.proto"; // Corrected import path
 // Represents a TV show season with all its metadata
 message Season {
     // TMDB unique identifier for the season
-    required uint32 id = 1;
+    uint32 id = 1;
 
     // Season name/title
     string name = 2;
@@ -17,13 +17,13 @@ message Season {
     uint32 season_number = 3;
 
     // Air date of the first episode of the season (can be null)
-    optional google.protobuf.Timestamp air_date = 4;
+    google.protobuf.Timestamp air_date = 4;
 
     // Overview or summary of the season (can be null/empty)
-    optional string overview = 5;
+    string overview = 5;
 
     // Path to the season's poster image (can be null/empty)
-    optional string poster_path = 6;
+    string poster_path = 6;
 
     // Average user rating for the season
     double vote_average = 7;
@@ -34,7 +34,7 @@ message Season {
     // String ID sometimes used in databases (e.g., by TMDB for season details)
     // This field might be specific to certain data sources or internal uses.
     // Keeping it as per original schema but with a higher field number.
-    optional string _id = 99; // Can be null/empty
+    string _id = 99; // Can be null/empty
 }
 
 // Removed EpisodeReference message as movieque.episode.Episode is now used directly.

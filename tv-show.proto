@@ -14,7 +14,7 @@ import "season.proto";
 // Represents a TV show with all its metadata
 message TvShow {
     // TMDB unique identifier for the TV show
-    required uint32 id = 1;
+    uint32 id = 1;
 
     // Name/title of the TV show
     string name = 2;
@@ -41,19 +41,19 @@ message TvShow {
     bool adult = 9;
 
     // Overview or summary of the TV show (can be null/empty)
-    optional string overview = 10;
+    string overview = 10;
 
     // Brief tagline for the TV show (can be null/empty)
-    optional string tagline = 11;
+    string tagline = 11;
 
     // URL to the official homepage (can be null/empty)
-    optional string homepage = 12;
+    string homepage = 12;
 
     // Path to the TV show's poster image (can be null/empty)
-    optional string poster_path = 13;
+    string poster_path = 13;
 
     // Path to the TV show's backdrop image (can be null/empty)
-    optional string backdrop_path = 14;
+    string backdrop_path = 14;
 
     // Original language of the TV show (ISO 639-1 code)
     string original_language = 15;

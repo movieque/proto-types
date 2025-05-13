@@ -11,7 +11,7 @@ import "google/protobuf/timestamp.proto";
 // Represents a movie with all its metadata
 message Movie {
     // TMDB unique identifier for the movie
-    required uint32 id = 1;
+    uint32 id = 1;
 
     // Title of the movie
     string title = 2;
@@ -20,13 +20,13 @@ message Movie {
     string original_title = 3;
 
     // IMDb unique identifier (e.g., "tt0120338") - can be null/empty
-    optional string imdb_id = 4;
+    string imdb_id = 4;
 
     // Release status (e.g., "Released", "Post Production")
     string status = 5;
 
     // Release date of the movie (can be null)
-    optional google.protobuf.Timestamp release_date = 6;
+    google.protobuf.Timestamp release_date = 6;
 
     // Whether the movie is considered adult content
     bool adult = 7;
@@ -35,19 +35,19 @@ message Movie {
     bool video = 8;
 
     // Overview or summary of the movie (can be null/empty)
-    optional string overview = 9;
+    string overview = 9;
 
     // Tagline for the movie (can be null/empty)
-    optional string tagline = 10;
+    string tagline = 10;
 
     // URL to the official homepage (can be null/empty)
-    optional string homepage = 11;
+    string homepage = 11;
 
     // Path to the movie's poster image (can be null/empty)
-    optional string poster_path = 12;
+    string poster_path = 12;
 
     // Path to the movie's backdrop image (can be null/empty)
-    optional string backdrop_path = 13;
+    string backdrop_path = 13;
 
     // Original language of the movie (ISO 639-1 code)
     string original_language = 14;
@@ -59,7 +59,7 @@ message Movie {
     uint32 revenue = 16;
 
     // Runtime in minutes (can be 0 if unknown)
-    optional uint32 runtime = 17;
+    uint32 runtime = 17;
 
     // Popularity score on TMDB
     double popularity = 18;
@@ -83,5 +83,5 @@ message Movie {
     repeated movieque.common.language.Language spoken_languages = 24;
 
     // Information about the collection this movie belongs to (can be null)
-    optional string belongs_to_collection = 25;
+    string belongs_to_collection = 25;
 }
